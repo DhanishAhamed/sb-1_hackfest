@@ -1,11 +1,11 @@
-import * as React from "react";
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, View, Text, Image, Pressable,Dimensions, SafeAreaView, ScrollView, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
+const {width,height} = Dimensions.get('screen');
 
 const Home = () => {
   const navigation = useNavigation();
-
   return (
     <View style={styles.home}>
       <View style={styles.homeChild} />
@@ -48,11 +48,7 @@ const Home = () => {
       <View style={[styles.slide1, styles.slideLayout]} />
       <View style={[styles.slide2, styles.slideLayout]} />
       <View style={[styles.slide3, styles.slideLayout]} />
-      <Image
-        style={styles.logoIcon}
-        resizeMode="cover"
-        source={require("../assets/logo.png")}
-      />
+
       <Pressable
         style={[styles.academic, styles.reportLayout]}
         onPress={() => navigation.navigate("AcademicTimetable")}
@@ -61,8 +57,7 @@ const Home = () => {
           style={[
             styles.academicChild,
             styles.groupItemLayout,
-            styles.academicChildShadowBox,
-            styles.itemLayout,
+            styles.itemLayout
           ]}
         />
         <Image
@@ -84,8 +79,7 @@ const Home = () => {
           <View
             style={[
               styles.rectangleWrapper,
-              styles.groupItemLayout,
-              styles.academicChildShadowBox,
+              styles.groupItemLayout
             ]}
           >
             <View
@@ -120,8 +114,7 @@ const Home = () => {
           style={[
             styles.academicChild,
             styles.groupItemLayout,
-            styles.academicChildShadowBox,
-            styles.itemLayout,
+            styles.itemLayout
           ]}
         />
         <Image
@@ -141,8 +134,7 @@ const Home = () => {
           style={[
             styles.academicChild,
             styles.groupItemLayout,
-            styles.academicChildShadowBox,
-            styles.itemLayout,
+            styles.itemLayout
           ]}
         />
         <Image
@@ -182,7 +174,7 @@ const Home = () => {
           style={[
             styles.rectangleWrapper,
             styles.groupItemLayout,
-            styles.academicChildShadowBox,
+           
           ]}
         >
           <View
@@ -233,8 +225,7 @@ const Home = () => {
         <View
           style={[
             styles.icon2Position,
-            styles.groupItemLayout,
-            styles.academicChildShadowBox,
+            styles.groupItemLayout
           ]}
         >
           <View
@@ -293,14 +284,17 @@ const styles = StyleSheet.create({
   rocket21Layout: {
     width: 50,
     position: "absolute",
+    left:35,
+    top:35,
   },
   itemLayout: {
     borderRadius: Border.br_md,
     position: "absolute",
   },
   launcherLayout: {
-    height: 130,
-    width: 130,
+    height: 100,
+    width: 100,
+    right: -5,
     position: "absolute",
   },
   slideLayout: {
@@ -319,24 +313,7 @@ const styles = StyleSheet.create({
     width: 60,
     top: 0,
   },
-  academicChildShadowBox: {
-    shadowOpacity: 1,
-    elevation: 4,
-    shadowRadius: 4,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    height: 60,
-  },
   office1Text: {
-    textShadowRadius: 4,
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowColor: "rgba(0, 0, 0, 0.25)",
     color: Color.midnightblue_100,
     top: 64,
   },
@@ -344,11 +321,6 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.redHatDisplay,
     fontWeight: "700",
     fontSize: FontSize.size_base,
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowColor: "rgba(0, 0, 0, 0.25)",
     color: Color.midnightblue_100,
     top: 64,
     textAlign: "left",
@@ -438,9 +410,9 @@ const styles = StyleSheet.create({
     left: 5,
     borderTopLeftRadius: Border.br_3xl,
     backgroundColor: Color.white,
-    width: 355,
-    height: 500,
-    position: "absolute",
+    width: "100%",
+    height: "100%",
+    position: "relative",
   },
   searchBarChild: {
     borderRadius: Border.br_xs,
@@ -467,7 +439,7 @@ const styles = StyleSheet.create({
     left: 0,
   },
   searchBar: {
-    top: 34,
+    top: 45,
     left: 87,
   },
   homeItem: {
@@ -487,7 +459,9 @@ const styles = StyleSheet.create({
     left: 38,
   },
   polygonParent: {
-    left: 0,
+    right:13,
+    position:'center',
+    alignItems: 'center',
     top: 0,
   },
   launcher: {
@@ -575,12 +549,7 @@ const styles = StyleSheet.create({
   },
   library1: {
     width: 44,
-    height: 12,
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowColor: "rgba(0, 0, 0, 0.25)",
+    height: 16,
     color: Color.midnightblue_100,
     top: 64,
     left: 11,
@@ -599,12 +568,6 @@ const styles = StyleSheet.create({
   },
   canteen1: {
     left: 6,
-    textShadowRadius: 4,
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowColor: "rgba(0, 0, 0, 0.25)",
     color: Color.midnightblue_100,
     fontFamily: FontFamily.redHatDisplay,
     fontWeight: "700",
@@ -773,7 +736,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.gray_200,
     flex: 1,
     width: "100%",
-    height: 800,
+    height: "100%",
     overflow: "hidden",
   },
 });

@@ -1,16 +1,48 @@
-import * as React from "react";
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import  React,{useState} from "react";
+import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontSize, Color, FontFamily, Margin } from "../GlobalStyles";
 
 const Canteen = () => {
   const navigation = useNavigation();
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
 
   return (
     <Pressable
       style={styles.canteen}
       onPress={() => navigation.navigate("CanteenBill")}
     >
+      <View style={styles.container}>
+      <View style={styles.counterContainer}>
+        <TouchableOpacity style={styles.button1} onPress={() => setCount1(count1 - 1)}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+        <Text style={styles.count1}>{count1}</Text>
+        <TouchableOpacity style={styles.button1} onPress={() => setCount1(count1 + 1)}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.counterContainer}>
+        <TouchableOpacity style={styles.button2} onPress={() => setCount2(count2 - 1)}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+        <Text style={styles.count2}>{count2}</Text>
+        <TouchableOpacity style={styles.button2} onPress={() => setCount2(count2 + 1)}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.counterContainer}>
+        <TouchableOpacity style={styles.button3} onPress={() => setCount3(count3 - 1)}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+        <Text style={styles.count3}>{count2}</Text>
+        <TouchableOpacity style={styles.button3} onPress={() => setCount3(count3 + 1)}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
       <View style={styles.canteenChild} />
       <Text style={styles.canteen1}>CANTEEN</Text>
       <View style={[styles.searchBar, styles.searchLayout]}>
@@ -172,6 +204,56 @@ const Canteen = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  counterContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 10,
+  },
+  button1: {
+    padding: 10,
+    margin: 5,
+    top:200,
+    left:240,
+  },
+  button2: {
+    padding: 10,
+    margin: 5,
+    top:120,
+    left:120,
+  },
+  button3: {
+    padding: 10,
+    margin: 5,
+    top:60,
+    left:1,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  count1: {
+    fontSize: 20,
+    margin: 5,
+    top:200,
+    left:240,
+  },
+  count2: {
+    fontSize: 20,
+    margin: 5,
+    top:120,
+    left:120,
+  },
+  count3: {
+    fontSize: 20,
+    margin: 5,
+    top:60,
+    left:0,
+  },
   searchLayout: {
     height: 46,
     width: 253,
