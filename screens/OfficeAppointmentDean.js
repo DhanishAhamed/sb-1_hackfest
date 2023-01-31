@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Image, Text, Pressable } from "react-native";
+import { StyleSheet, View, Image, Text, Pressable} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Color, Border, FontSize } from "../GlobalStyles";
 
@@ -19,7 +19,18 @@ const OfficeAppointmentDean = () => {
       </Text>
       <View style={styles.officeAppointmentDeanInner} />
       <Text style={[styles.dean, styles.deanTypo, styles.deanTypo1]}>DEAN</Text>
-      <View style={[styles.rectangleView, styles.rectangleViewBorder]} />
+      <View style={[styles.rectangleView, styles.rectangleViewBorder]}/>
+
+  {/* /*    <TextInput
+        style={[styles.rectangleView]}
+        placeholder="SUBJECT"
+        value={subject}
+        onChangeText={setSubject}
+        onFocus={() => setInputFocus(true)}
+        onBlur={() => setInputFocus(false)}
+      /> */}
+
+
       <Text style={[styles.subject, styles.deanTypo, styles.deanTypo1]}>
         SUBJECT
       </Text>
@@ -59,6 +70,16 @@ const OfficeAppointmentDean = () => {
 };
 
 const styles = StyleSheet.create({
+  subject:
+    {
+      width: '80%',
+      height: 40,
+      padding: 10,
+      marginBottom: 10,
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 5,
+    },
   deanTypo: {
     textAlign: "left",
     fontFamily: FontFamily.redHatDisplay,
