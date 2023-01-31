@@ -1,19 +1,48 @@
-import * as React from "react";
 import { Image, StyleSheet, View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
+import React, { useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
+
 
 const Login = () => {
   const navigation = useNavigation();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [inputFocus, setInputFocus] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = () => {
+    // Add logic to handle the submit action
+    // navigation.navigate("Home");
+    console.log('Username:', username);
+    console.log('Password:', password);
+    fetch('http://192.168.1.13:5000/posts', {
+  method: 'GET',})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+    if (username === "Zain" && password === "zain123"){
+      navigation.navigate("Home");
+    } else {
+      setErrorMessage('Incorrect username or password');
+    }
+
+  };
 
   return (
     <View style={styles.login}>
       <Image
         style={styles.logoIcon}
         resizeMode="cover"
-        source={require("../assets/logo30.png")}
+        source={require("../assets/logo.png")}
       />
-      <View style={styles.usernamePassword}>
+     
+      {/* <View style={styles.usernamePassword}>
         <View style={[styles.usernamePasswordChild, styles.usernameLayout]} />
         <View style={[styles.usernamePasswordItem, styles.usernameLayout]} />
         <Text style={[styles.username, styles.usernameTypo]}>
@@ -28,21 +57,74 @@ const Login = () => {
       >
         <Text style={styles.submit1}>SUBMIT</Text>
       </Pressable>
-      <View style={styles.loginItem} />
+      <View style={styles.loginItem} /> */}
       <Text style={[styles.academia, styles.academiaTypo]}>ACADEMIA</Text>
-      <Text style={[styles.forgotPassword, styles.academiaTypo]}>
+      {errorMessage !== '' && (
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
+      )}
+      {/* <Text style={[styles.forgotPassword, styles.academiaTypo]}>
         forgot password
-      </Text>
-      <Image
-        style={styles.logoIcon1}
-        resizeMode="cover"
-        source={require("../assets/logo31.png")}
+      </Text> */}
+      <View style={[styles.container, inputFocus && { marginBottom: 20 }]}>
+      <TextInput
+        style={[styles.input, { backgroundColor: 'white' }]}
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
+        onFocus={() => setInputFocus(true)}
+        onBlur={() => setInputFocus(false)}
       />
+      <TextInput
+        style={[styles.input, { backgroundColor: 'white' }]}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+        onFocus={() => setInputFocus(true)}
+        onBlur={() => setInputFocus(false)}
+      />
+      
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Submit</Text>
+      </TouchableOpacity>
+    </View>
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    marginBottom: 150,
+    // bottom: 50,
+    // width: '80%',
+    // position: 'absolute',
+  },
+  input: {
+    width: '80%',
+    height: 40,
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+  },
+  button: {
+    width: '80%',
+    padding: 10,
+    backgroundColor: 'lightblue',
+    borderRadius: 5,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: 'white',
+  },
   usernameLayout: {
     height: 40,
     width: 217,
@@ -51,23 +133,23 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   usernameTypo: {
-    height: 16,
-    width: 99,
+    height: 21,
+    width: 110,
     fontSize: FontSize.size_3xl,
     left: 60,
-    textAlign: "left",
+    textAlign: "center",
     color: Color.black,
     fontFamily: FontFamily.inter,
     position: "absolute",
   },
   academiaTypo: {
     fontFamily: FontFamily.redHatDisplay,
-    textAlign: "left",
+    textAlign: "center",
     position: "absolute",
   },
   logoIcon: {
     top: 40,
-    left: 290,
+    left: 310,
     width: 141,
     height: 141,
     position: "absolute",
@@ -75,6 +157,12 @@ const styles = StyleSheet.create({
   usernamePasswordChild: {
     top: 0,
     left: 0,
+  },
+  errorMessage: {
+    color: 'red',
+    marginTop: 520,
+    textAlign: "center",
+    height: 25
   },
   usernamePasswordItem: {
     top: 58,
@@ -136,7 +224,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: Color.gainsboro_100,
     width: 211,
-    height: 30,
+    height: 55,
   },
   forgotPassword: {
     top: 668,
@@ -145,10 +233,10 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_xl,
   },
   logoIcon1: {
-    top: 121,
+    top: 110,
     width: 310,
-    height: 310,
-    left: 0,
+    height: 390,
+    left: -70,
     position: "absolute",
   },
   login: {

@@ -531,7 +531,7 @@ const styles = StyleSheet.create({
   menu: {
     top: 184,
     left: 33,
-    width: 283,
+    width: 10,
     height: 694,
     position: "absolute",
   },
@@ -539,7 +539,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.gray_200,
     flex: 1,
     height: 887,
-    overflow: "hidden",
+    
     width: "100%",
   },
 });

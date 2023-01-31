@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
   },
   textTypo5: {
     left: 211,
-    width: 12,
+    width: 15,
     color: Color.black,
     textAlign: "left",
     fontFamily: FontFamily.redHatDisplay,
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
   },
   textTypo4: {
     left: 111,
-    width: 29,
+    width: 35,
     color: Color.black,
     textAlign: "left",
     fontFamily: FontFamily.redHatDisplay,
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
   },
   textTypo3: {
     left: 212,
-    width: 12,
+    width: 15,
     color: Color.black,
     textAlign: "left",
     fontFamily: FontFamily.redHatDisplay,
@@ -392,6 +392,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   textTypo2: {
+    width:15,
     left: 285,
     color: Color.black,
     textAlign: "left",
@@ -478,8 +479,8 @@ const styles = StyleSheet.create({
     top: 214,
     left: 5,
     backgroundColor: Color.white,
-    width: 355,
-    height: 586,
+    width: "100%",
+    height:  "100%",
   },
   timetableAcademicChild: {
     left: 0,
@@ -641,15 +642,15 @@ const styles = StyleSheet.create({
     width: 10,
   },
   text1: {
-    width: 25,
+    width: 30,
     top: 44,
   },
   text2: {
-    width: 12,
+    width: 15,
     top: 45,
   },
   text3: {
-    width: 29,
+    width: 35,
     left: 113,
     top: 72,
     color: Color.black,
@@ -660,7 +661,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   text4: {
-    width: 26,
+    width:35,
     top: 104,
   },
   text5: {
@@ -670,7 +671,7 @@ const styles = StyleSheet.create({
     top: 166,
   },
   text7: {
-    width: 30,
+    width: 35,
     top: 196,
   },
   text8: {
@@ -876,11 +877,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   attendance2: {
-    top: 147,
+    top: 140,
     left: 38,
     fontSize: FontSize.size_6xl,
     width: 183,
-    height: 31,
+    height: 35,
     color: Color.white,
     textAlign: "left",
     fontFamily: FontFamily.redHatDisplay,
